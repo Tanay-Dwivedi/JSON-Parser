@@ -13,7 +13,7 @@
             android:id="@+id/empName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="NAME"
+            android:text="@string/en"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold">
@@ -24,7 +24,7 @@
             android:id="@+id/empAge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="AGE"
+            android:text="@string/ea"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold">
@@ -35,7 +35,7 @@
             android:id="@+id/empCity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CITY"
+            android:text="@string/ec"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold">
