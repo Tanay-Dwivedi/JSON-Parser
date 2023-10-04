@@ -1,0 +1,80 @@
+
+*MainActivity.java*
+
+- This file represents the main activity of an Android application. It performs the following tasks:
+
+  - Imports and Package Declaration:
+    - Import necessary classes and packages, including Android-specific libraries and your application's package.
+  - Class Declaration:
+    - Declare the MainActivity class, which extends AppCompatActivity, making it an Android activity.
+  - Member Variables:
+    - Declare member variables for this class, including:
+      - RecyclerView rv: A UI component to display a list of items.
+      - EmpAdapter empAdapter: An adapter used to populate data in the RecyclerView.
+      - List<EmpModal> emAl: A list to hold data objects of type EmpModal.
+  - onCreate Method:
+    - This method is called when the activity is created.
+    - It sets the activity's content view to the XML layout defined in R.layout.activity_main.
+    - Initializes the RecyclerView, sets up its layout manager and item animator.
+    - Creates an instance of EmpAdapter and sets it to the RecyclerView.
+    - Calls the getJSONLocally() method to load and parse JSON data.
+  - loadJSONLocally Method:
+    - Responsible for loading JSON data from a local file.
+    - Reads the JSON data from a file named "employee.json" stored in the assets folder.
+    - The data is read as a string and returned.
+  - getJSONLocally Method:
+    - Responsible for parsing the JSON data and populating the emAl list.
+    - First attempts to parse the JSON data from the string obtained in loadJSONLocally.
+    - Extracts various pieces of information from the JSON object, such as response codes and an array of employee data.
+    - Iterates over the employee data, creating EmpModal objects, and adds them to the emAl list.
+    - Finally, it notifies the adapter of data changes to update the UI.
+
+*EmpModal.java*
+
+- This file defines the EmpModal class, which represents the model or structure of an employee. It accomplishes the following:
+
+  - Class Declaration:
+    - Declares the EmpModal class, which represents an employee with attributes such as name, age, and city.
+  - Member Variables:
+    - Defines member variables to store employee data:
+      - String name: Stores the employee's name.
+      - String age: Stores the employee's age.
+      - String city: Stores the employee's city.
+  - Getter and Setter Methods:
+    - Provides getter and setter methods for each member variable.
+    - Getter methods allow other classes to retrieve the values of these variables.
+    - Setter methods allow other classes to set the values of these variables.
+
+*EmpAdapter.java*
+
+- This file defines the EmpAdapter class, which is a custom adapter for populating data into a RecyclerView. It performs the following tasks:
+
+  - Imports and Package Declaration:
+    - Import necessary classes and packages, including Android-specific libraries.
+  - Class Declaration:
+    - Declare the EmpAdapter class, which extends RecyclerView.Adapter<EmpAdapter.CustomViewHolder>.
+    - Specifies that it works with a custom ViewHolder called CustomViewHolder.
+  - Member Variables:
+    - Declare member variables for this class, including:
+      - Context context: A reference to the Android application context.
+      - List<EmpModal> em: A list to hold EmpModal objects.
+  - Constructor:
+    - Defines a constructor for the adapter that takes a Context and a list of EmpModal objects as parameters.
+    - Initializes the context and em member variables with the provided values.
+  - DataChanged Method:
+    - A custom method to update the data in the adapter.
+    - Takes a list of EmpModal objects as a parameter and sets it to the em member variable.
+    - After updating the data, it calls notifyDataSetChanged() to refresh the UI.
+  - onCreateViewHolder Method:
+    - Overrides this method to create and return a new CustomViewHolder.
+    - Inflates a layout (defined in R.layout.list_item) for each item view in the RecyclerView.
+  - onBindViewHolder Method:
+    - Overrides this method to bind data to the views within each item in the RecyclerView.
+    - Gets the EmpModal object at the specified position in the data list and updates the corresponding TextViews in the item view.
+  - getItemCount Method:
+    - Overrides this method to return the number of items in the data list.
+    - Checks if the em list is null and returns 0 if it is, or the size of the em list otherwise.
+  - CustomViewHolder Class:
+    - A nested static class that represents a custom ViewHolder for the RecyclerView.
+    - Holds references to the TextViews within each item view.
+    - The constructor initializes these view references using findViewById.
